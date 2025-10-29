@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Related Contacts with Same Relationship Type">
+        <template if:true={relatedContacts.length}>
+            <ul>
+                <template for:each={relatedContacts} for:item="contact">
+                    <li key={contact.Id}>
+                        <lightning-record-view-form record-id={contact.Id} object-api-name="Contact">
+                            <lightning-output-field field-name="Name"></lightning-output-field>
+                            <lightning-output-field field-name="Email"></lightning-output-field>
+                        </lightning-record-view-form>
+                    </li>
+                </template>
+            </ul>
+        </template>
+        <template if:true={error}>
+            <p class="slds-text-color_error">{error}</p>
+        </template>
+    </lightning-card>
+</template>
